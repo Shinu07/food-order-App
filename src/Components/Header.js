@@ -5,9 +5,6 @@ const Title = () => (
       alt="logo"
       src="https://cdn.dribbble.com/users/2102703/screenshots/13943094/media/479965c0875a557a6d2564757bc9f20f.jpg?compress=1&resize=1000x750&vertical=top"
     />
-    <h1 id="title" key="h2">
-      Swiggy
-    </h1>
   </>
 );
 
