@@ -9,6 +9,7 @@
 }
 #brand-logo {
   width: 150px;
+  height: 120px;
 }
 #Title {
   padding-left: auto;
@@ -20,6 +21,7 @@
 }
 .nav-Items > ul > li {
   padding: 10px;
+  text-shadow: 1px 0 10px #ffa700;
 }
 
 .search {
@@ -29,27 +31,43 @@
   padding: 3px;
 }
 .search-text {
-  border-color: rgb(255, 245, 228);
+  border-color: #fc8019;
   border-radius: 5rem;
-  border-color: orange;
   padding: 7px;
   background-color: rgb(248, 232, 202);
   width: 18rem;
+  box-shadow: 2px 2px 12px 0.2px #ffa700;
 }
 
 .search-btn {
-  border-color: orange;
+  border-color: rgb(245, 196, 104);
   border-radius: 5rem;
   margin: 5px;
   color: white;
-  background-color: orange;
+  background-color: #fc8019;
   width: 5rem;
+  box-shadow: 1px 1px 12px 0.2px #ffa700;
   padding: 7px;
 }
-
+.search-btn:hover {
+  background-color: #fc8019;
+}
+.auth-btn {
+  border-color: lightgreen;
+  border-radius: 5rem;
+  margin: 5px;
+  color: white;
+  background-color: rgb(5, 154, 40);
+  width: 5rem;
+  box-shadow: 1px 1px 12px 2.5px rgb(82, 230, 82);
+  padding: 7px;
+}
+.auth-btn:hover {
+  background-color: rgb(14, 197, 14);
+}
 .card {
   width: 200px;
-  border: 2.5px solid orange;
+  border: 2.5px solid #fc8019;
   border-radius: 15px;
   word-wrap: break-word;
   padding: 5px;
