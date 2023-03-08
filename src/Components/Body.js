@@ -1,20 +1,21 @@
-import { restaurantList } from "../../constant";
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import ShimmerComponent from "./ShimmerUI";
 
 function filterData(searchText, restaurants) {
   const filterData = restaurants.filter((restaurant) =>
-    restaurant.data.name.includes(searchText)
+    restaurant?.data?.name?.toLowerCase()?.includes(searchText.toLowerCase())
   );
   return filterData;
 }
 
 const Body = () => {
-  const [restaurants, setRestaurants] = useState(restaurantList);
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    // API Call
+    //API call
     getRestaurants();
   }, []);
 
@@ -24,11 +25,19 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
-    setRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
   }
-  console.log("render");
-  return (
+
+  // if (!allRestaurants) return <h2>No restaurant</h2>;
+
+  return allRestaurants.length === 0 ? (
+    <>
+      <ShimmerComponent />
+      <ShimmerComponent />
+      <ShimmerComponent />
+    </>
+  ) : (
     <>
       <div className="search">
         <input
@@ -44,8 +53,8 @@ const Body = () => {
         <button
           className="search-btn"
           onClick={() => {
-            const data = filterData(searchText, restaurants);
-            setRestaurants(data);
+            const data = filterData(searchText, allRestaurants);
+            setFilteredRestaurants(data);
           }}
         >
           search
@@ -53,11 +62,15 @@ const Body = () => {
       </div>
 
       <div className="restaurant-list">
-        {restaurants.map((restaurant) => {
-          return (
-            <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
-          );
-        })}
+        {filteredRestaurants.length === 0 ? (
+          <h1>No restaurant match your Filter!!</h1>
+        ) : (
+          filteredRestaurants.map((restaurant) => {
+            return (
+              <RestaurantCard {...restaurant.data} key={restaurant.data.id} />
+            );
+          })
+        )}
       </div>
     </>
   );
