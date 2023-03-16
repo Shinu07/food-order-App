@@ -18,12 +18,15 @@ const Header = () => {
     <div className="header">
       <Title />
       <div className="nav-Items">
+        <span className="user-name">
+          {isAuthenticated && <p>{`Welcome ${user.name}`}</p>}
+        </span>
         <ul>
           <li>Home </li>
           <li>About</li>
           <li>Contact</li>
           <li>Cart</li>
-          <span>{isAuthenticated && <p>{`Welcome ${user.name}`}</p>}</span>
+
           <span>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</span>
         </ul>
       </div>
