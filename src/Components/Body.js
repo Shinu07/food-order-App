@@ -77,3 +77,10 @@ const Body = () => {
 };
 
 export default Body;
+
+/* domain
+dev-gbes8amljl3k4q55.us.auth0.com
+
+client ID
+qy7z6sEmCj6xhFzfsBifx4bftu7SYU7D
+*/
