@@ -1,5 +1,13 @@
 const Footer = () => {
-  return <h3>footer</h3>;
+  return (
+    <div>
+      <ul className="footer-section">
+        <li>Company</li>
+        <li>Contact</li>
+        <li>feedback</li>
+      </ul>
+    </div>
+  );
 };
 
 export default Footer;
