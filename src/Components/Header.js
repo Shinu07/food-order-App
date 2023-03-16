@@ -1,4 +1,7 @@
 import { useState } from "react";
+import LoginButton from "./Loginbtn";
+import LogoutButton from "./Logoutbtn";
+import { useAuth0 } from "@auth0/auth0-react";
 const Title = () => (
   <>
     <img
@@ -10,37 +13,18 @@ const Title = () => (
 );
 
 const Header = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const { user, isAuthenticated, isLoading } = useAuth0();
   return (
     <div className="header">
       <Title />
       <div className="nav-Items">
         <ul>
-          {isLoggedIn ? (
-            <button
-              className="auth-btn"
-              onClick={() => {
-                setLoggedIn(false);
-              }}
-            >
-              Logout
-            </button>
-          ) : (
-            <button
-              className="auth-btn"
-              onClick={() => {
-                setLoggedIn(true);
-              }}
-            >
-              Login
-            </button>
-          )}
-        </ul>
-        <ul>
           <li>Home </li>
           <li>About</li>
           <li>Contact</li>
           <li>Cart</li>
+          <span>{isAuthenticated && <p>{`Welcome ${user.name}`}</p>}</span>
+          <span>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</span>
         </ul>
       </div>
     </div>
